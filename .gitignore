@@ -335,7 +335,5 @@ target/
 maildir
 
 
-*/*/*.csv
+*/*.csv
 practical2/data/household_power_consumption.txt
-practical3/diabetes.csv
-practical3/spam.csv
