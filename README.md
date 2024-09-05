@@ -8,3 +8,4 @@ The Repo contains all programs done in PR Lab.
 | 2             | Extracting Region features and Boundary features from Images | 30-07-24 |
 | 3             | Understanding Pre-Processing in Datasets.                    | 06-08-24 |
 | 4             | Understanding Feature Extraction in Datasets.                | 13-08-24 |
+| 5             | Understanding Linear Discriminant projection in Datasets.    | 20-08-24 |
