@@ -12,6 +12,45 @@ from statsmodels.stats.outliers_influence import variance_inflation_factor
 from sklearn.linear_model import LinearRegression
 from math import sqrt
 
+
+n_samples = 100
+correlation_strength = 0.8
+X1 = np.random.normal(0, 1, n_samples)
+X2 = correlation_strength * X1 + np.random.normal(0, 1 - correlation_strength**2, n_samples)
+time = np.arange(n_samples)
+data = np.column_stack((time, X1, X2))[:5]
+
+
+def simple_moving_average(data, ws):
+    sma = []
+    for i in range(len(data) - ws + 1):
+        window = data[i:i+ws]
+        sma.append(sum(window)/ws)
+    return sma
+
+def exponential_moving_average(data, alpha):
+    ema = []
+    ema.append(data[0])
+    
+    # EMA formula: EMA_t = alpha * X_t + (1 - alpha) * EMA_(t-1)
+    for t in range(1, len(data)):
+        current_ema = alpha * data[t] + (1 - alpha) * ema[-1]
+        ema.append(round(current_ema, 2))
+    
+    return ema
+
+data = [20, 30, 39, 60, 40, 51, 62, 81, 50, 64, 74, 95]
+window_size = 4
+sma_values = simple_moving_average(data, window_size)
+print("Simple Moving Average:", sma_values)
+
+data = [20, 30, 39, 60, 40, 51, 62, 81, 50, 64, 74, 95]
+alpha = 0.4
+ema_values = exponential_moving_average(data, alpha)
+print("Exponential Moving Average:", ema_values)
+
+
+
 df = pd.read_csv("../practical8/IPG2211A2N.csv", index_col="DATE", parse_dates=True)
 plt.figure(figsize=(10, 5))
 plt.plot(df, label="Electric and Gas Utilities")

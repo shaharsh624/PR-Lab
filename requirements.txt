@@ -1,0 +1,13 @@
+numpy
+pandas
+matplotlib
+seaborn
+opencv-python
+pillow
+scikit-learn
+statsmodels
+librosa
+hmmlearn
+tqdm
+nltk
+spacy
